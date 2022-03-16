@@ -45,7 +45,7 @@
                     </div>
                     <div class="mb-3">
 
-                        <select class="form-control" name="userSex">
+                        <select class="form-control" name="usersex">
                             <option value="">Select Sex</option>
                             <option value="M"> Male</option>
                             <option value="F"> Female</option>
