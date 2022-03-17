@@ -20,11 +20,11 @@
     </head>
     <body class="font-sans antialiased bg-light">
         <x-jet-banner />
-        @livewire('navigation-menu')
+        {{-- @livewire('navigation-menu') --}}
 
         <!-- Page Heading -->
         <header class="d-flex py-3 bg-white shadow-sm border-bottom">
-            <div class="container">
+            <div class="container text-center">
                 {{ $header }}
             </div>
         </header>

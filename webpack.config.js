@@ -6,7 +6,5 @@ module.exports = {
             '@': path.resolve('resources/js'),
         },
     },
-    plugins: [
-        require('flowbite/plugin')
-    ]  
+  
 };
