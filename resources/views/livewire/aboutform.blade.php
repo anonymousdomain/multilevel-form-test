@@ -4,7 +4,7 @@
         <p class="mt-1 text-sm text-gray-600">{{ $pages[$currentPage]['subheading'] }}</p>
     </div>
     @if ($success)
-        <div class="text-sm bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative mb-4"
+        <div class="text-sm bg-green border border-green text-white px-4 py-3 rounded relative mb-4"
             role="alert">
             <span class="block sm:inline">{{ $success }}</span>
             <span wire:click="resetSuccess" class="absolute top-0 bottom-0 right-0 px-4 py-3">
@@ -22,7 +22,7 @@
             @if ($currentPage === 1)
                 <div class="row mt-4">
                     <div class="col form-floating ">
-                        <input wire:model.lazy='name' type="text" class="form-control" placeholder="dawit" name="name">
+                        <input wire:model.lazy='name' type="text" class="form-control" placeholder="dawit" name="name" value="{{ old('') }}">
                         <label for="floatingInput" class="text-center">First Name</label>
                     </div>
                     <div class="col form-floating ">
@@ -62,14 +62,14 @@
                     <div class="col">
                         Marital Status
                         <div class="form-check">
-                            <input wire:model.lazy='Mstatus' class="form-check-input" type="radio" name="Mstatus" id="Mstatus">
+                            <input wire:model.lazy='Mstatus' class="form-check-input" type="radio" name="Mstatus" id="Mstatus" value="single">
                             <label class="form-check-label" for="Mstatus">
                                 single
                             </label>
                         </div>
                         <div class="form-check">
                             <input wire:model.lazy='Mstatus'  class="form-check-input" type="radio" name="Mstatus" id="Mstatus"
-                                checked>
+                                checked value="married" >
                             <label class="form-check-label" for="Mstatus">
                                 Married
                             </label>

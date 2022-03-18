@@ -7,43 +7,46 @@
             </x-slot>
 
             <h5 class="text-center  p-4">Volunteer Registration Form</h5>
-            <x-jet-validation-errors class="mb-3" />
             <form method="POST" action="{{ route('register') }}">
                 @csrf
-                <div class="mb-3 has-feedback">
-                    <input type="text" class="form-control" placeholder="First name" name="name" id="name" autofocus=""
-                        value="{{ old('name') }}">
-                    <span class="glyphicon glyphicon-user form-control-feedback"></span>
+              
+                <div class="mb-3">
+                    <x-jet-label value="{{ __('Name') }}" />
+
+                    <x-jet-input class="{{ $errors->has('name') ? 'is-invalid' : '' }}" type="text" name="name"
+                                 :value="old('name')"  />
+                    <x-jet-input-error for="name"></x-jet-input-error>
                 </div>
-                <div class="mb-3 has-feedback">
-                    <input type="text" class="form-control" placeholder="Last name" name="lastname" id="lastname"
-                        value="{{ old('lastname') }}">
-                    <span class="glyphicon glyphicon-user form-control-feedback"></span>
+                <div class="mb-3">
+                    <x-jet-label value="{{ __('LastName') }}" />
+
+                    <x-jet-input class="{{ $errors->has('lastname') ? 'is-invalid' : '' }}" type="text" name="lastname"
+                                 :value="old('lastname')"  />
+                    <x-jet-input-error for="lastname"></x-jet-input-error>
                 </div>
-                <div class="mb-3 has-feedback">
-                    <input type="email" class="form-control" placeholder="Email" name="email" id="email"
-                        value="{{ old('email') }}">
-                    <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+               
+                <div class="mb-3">
+                    <x-jet-label value="{{ __('Email') }}" />
+
+                    <x-jet-input class="{{ $errors->has('email') ? 'is-invalid' : '' }}" type="email" name="email"
+                                 :value="old('email')"  />
+                    <x-jet-input-error for="email"></x-jet-input-error>
                 </div>
-                <div class="mb-3 has-feedback">
-                    <input type="tel" class="form-control" placeholder="Phone Number" name="phone" id="phone"
-                        value="{{ old('phone') }}">
-                    <span class="glyphicon glyphicon-phone form-control-feedback"></span>
+                <div class="mb-3">
+                    <x-jet-label value="{{ __('Phone') }}" />
+
+                    <x-jet-input class="{{ $errors->has('phone') ? 'is-invalid' : '' }}" type="text" name="phone"
+                                 :value="old('phone')"  />
+                    <x-jet-input-error for="phone"></x-jet-input-error>
                 </div>
-                <div class="mb-3 has-feedback">
-                    <input type="text" class="form-control" placeholder="Usename" name="username" id="username"
-                        value="{{ old('username') }}">
-                    <span class="glyphicon glyphicon-user form-control-feedback"></span>
+                <div class="mb-3">
+                    <x-jet-label value="{{ __('Username') }}" />
+
+                    <x-jet-input class="{{ $errors->has('username') ? 'is-invalid' : '' }}" type="text" name="username"
+                                 :value="old('username')"  />
+                    <x-jet-input-error for="username"></x-jet-input-error>
                 </div>
-                <div class="mb-3 has-feedback">
-                    <input type="password" class="form-control" name="password" placeholder="Password">
-                    <span class="glyphicon glyphicon-lock form-control-feedback"></span>
-                </div>
-                <div class="mb-3 has-feedback">
-                    <input type="password" class="form-control" name="password_confirmation"
-                        placeholder="Retype password">
-                    <span class="glyphicon glyphicon-log-in form-control-feedback"></span>
-                </div>
+               
                 <div class="mb-3">
 
                     <select class="form-control" name="usersex">
@@ -53,16 +56,34 @@
                     </select>
 
                 </div>
-                <div class="row mt-4">
-                    <!-- /.col -->
-                    <div class="col-xs-4">
-                        <button type="submit" class="btn btn-primary btn-block btn-flat"
-                            name="register">Register</button>
+        
+                <div class="mb-3">
+                    <x-jet-label value="{{ __('Password') }}" />
+
+                    <x-jet-input class="{{ $errors->has('password') ? 'is-invalid' : '' }}" type="password"
+                                 name="password" />
+                    <x-jet-input-error for="password"></x-jet-input-error>
+                </div>
+
+                <div class="mb-3">
+                    <x-jet-label value="{{ __('Confirm Password') }}" />
+
+                    <x-jet-input class="form-control" type="password" name="password_confirmation"  />
+                </div>
+               
+                <div class="mb-0">
+                    <div class="d-flex justify-content-end align-items-baseline">
+                        <a class="text-muted me-3 text-decoration-none" href="{{ route('login') }}">
+                            {{ __('Already registered?') }}
+                        </a>
+
+                        <x-jet-button>
+                            {{ __('Register') }}
+                        </x-jet-button>
                     </div>
-                    <!-- /.col -->
                 </div>
             </form>
-            <a href="login" class="text-center">I already have an account</a>
+          
         </div>
         <!-- /.form-box -->
         </div>
