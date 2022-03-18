@@ -45,21 +45,21 @@ class Aboutform extends Component
 
     private $validationRules = [
         1 => [
-            'name' => ['required', 'min:3','max:25'],
-            'lastname' => ['required', 'min:3','max:25'],
-            'username' => ['required', 'min:3','max:25'],
-            'phone' => ['required', 'min:10','max:14'],
+            'name' => ['required', 'min:3', 'max:25'],
+            'lastname' => ['required', 'min:3', 'max:25'],
+            'username' => ['required', 'min:3', 'max:25'],
+            'phone' => ['required', 'min:10', 'max:14'],
             'email' => ['required', 'email', 'unique:users,email'],
         ],
         2 => [
-            'fullname' => ['required', 'string', 'min:3','max:25'],
+            'fullname' => ['required', 'string', 'min:3', 'max:25'],
             'rel' => ['required', 'string', 'min:4', 'max:20'],
-            'relphone' => ['required', 'min:10','max:14'],
+            'relphone' => ['required', 'min:10', 'max:14'],
         ],
         3 => [
-            'natinality' => ['required', 'string', 'min:3','max:25'],
+            'natinality' => ['required', 'string', 'min:3', 'max:25'],
             'region' => ['required', 'string', 'min:4', 'max:20'],
-            'sub_city' => ['required', 'min:3','max:25'],
+            'sub_city' => ['required', 'min:3', 'max:25'],
             'house_no' => ['required', 'unique:addresses,house_no'],
         ],
     ];
@@ -79,18 +79,18 @@ class Aboutform extends Component
     {
         $this->reset('success');
     }
-    // public function updated($propertyName)
-    // {
-    //     $this->validateOnly($propertyName, $this->validationRules[$this->currentPage]);
-    // }
+    public function updated($propertyName)
+    {
+        $this->validateOnly($propertyName, $this->validationRules[$this->currentPage]);
+    }
     public function submit(Request $request)
     {
-         $rules = collect($this->validationRules)->collapse()->toArray();
+        $rules = collect($this->validationRules)->collapse()->toArray();
 
-         $this->validate($rules);
+        $this->validate($rules);
 
         $request->user()->adresses()->create([
-            'fax' =>$this->fax,
+            'fax' => $this->fax,
             'Mstatus' => $this->Mstatus,
             'fullname' => $this->fullname,
             'rel' => $this->rel,
@@ -105,6 +105,8 @@ class Aboutform extends Component
         // $this->resetValidation();
 
         $this->success = 'User created successfully!';
+
+        return redirect()->route('dashboard');
     }
     public function render()
     {

@@ -3,7 +3,7 @@
         <h3 class="text-lg font-medium leading-6 text-gray-900">{{ $pages[$currentPage]['heading'] }}</h3>
         <p class="mt-1 text-sm text-gray-600">{{ $pages[$currentPage]['subheading'] }}</p>
     </div>
-    @if ($success)
+    {{-- @if ($success)
         <div class="text-sm bg-green border border-green text-white px-4 py-3 rounded relative mb-4" role="alert">
             <span class="block sm:inline">{{ $success }}</span>
             <span wire:click="resetSuccess" class="absolute top-0 bottom-0 right-0 px-4 py-3">
@@ -15,7 +15,13 @@
                 </svg>
             </span>
         </div>
-    @endif
+    @endif --}}
+    @if ($success)
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+       <span>{{$success}}</span>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>
+      @endif
     <form wire:submit.prevent="submit">
         <div class="container">
             @if ($currentPage === 1)
