@@ -54,4 +54,8 @@ class User extends Authenticatable
     protected $appends = [
         'profile_photo_url',
     ];
+
+    public function adresses(){
+        return $this->hasOne(Address::class);
+    }
 }
