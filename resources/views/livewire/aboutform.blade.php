@@ -4,8 +4,7 @@
         <p class="mt-1 text-sm text-gray-600">{{ $pages[$currentPage]['subheading'] }}</p>
     </div>
     @if ($success)
-        <div class="text-sm bg-green border border-green text-white px-4 py-3 rounded relative mb-4"
-            role="alert">
+        <div class="text-sm bg-green border border-green text-white px-4 py-3 rounded relative mb-4" role="alert">
             <span class="block sm:inline">{{ $success }}</span>
             <span wire:click="resetSuccess" class="absolute top-0 bottom-0 right-0 px-4 py-3">
                 <svg class="fill-current h-6 w-6 text-green" role="button" xmlns="http://www.w3.org/2000/svg"
@@ -22,30 +21,54 @@
             @if ($currentPage === 1)
                 <div class="row mt-4">
                     <div class="col form-floating ">
-                        <input wire:model.lazy='name' type="text" class="form-control" placeholder="dawit" name="name" value="{{ old('') }}">
+                        <input wire:model.lazy='name' type="text" class="form-control" placeholder="dawit" name="name"
+                            value="{{ old('') }}">
                         <label for="floatingInput" class="text-center">First Name</label>
+                        @error('name')
+                            <span class="text-danger">{{ $message }}</span>
+                        @enderror
                     </div>
                     <div class="col form-floating ">
-                        <input wire:model.lazy='lastname' type="text" class="form-control" placeholder="mekonnen" name="lastname">
+                        <input wire:model.lazy='lastname' type="text" class="form-control" placeholder="mekonnen"
+                            name="lastname">
                         <label for="floatingInput" class="text-center">Last Name</label>
+                        @error('lastname')
+                            <span class="text-danger">{{ $message }}</span>
+                        @enderror
                     </div>
                     <div class="col form-floating ">
-                        <input wire:model.lazy='email' type="text" class="form-control" placeholder="mekonnen" name="email">
+                        <input wire:model.lazy='email' type="text" class="form-control" placeholder="mekonnen"
+                            name="email">
                         <label for="floatingInput" class="text-center">Email</label>
+                        @error('email')
+                            <span class="text-danger">{{ $message }}</span>
+                        @enderror
                     </div>
                 </div>
                 <div class="row mt-4">
                     <div class="col form-floating ">
-                        <input wire:model.lazy='username' type="text" class="form-control" placeholder="mekonnen" name="username">
+                        <input wire:model.lazy='username' type="text" class="form-control" placeholder="mekonnen"
+                            name="username">
                         <label for="floatingInput" class="text-center">UserName</label>
+                        @error('username')
+                            <span class="text-danger">{{ $message }}</span>
+                        @enderror
                     </div>
                     <div class="col form-floating ">
-                        <input wire:model.lazy='phone' type="text" class="form-control" placeholder="mekonnen" name="phone">
+                        <input wire:model.lazy='phone' type="text" class="form-control" placeholder="mekonnen"
+                            name="phone">
                         <label for="floatingInput" class="text-center">Phone</label>
+                        @error('phone')
+                            <span class="text-danger">{{ $message }}</span>
+                        @enderror
                     </div>
                     <div class="col form-floating ">
-                        <input wire:model.lazy='fax' type="text" class="form-control" placeholder="mekonnen" name="fax">
+                        <input wire:model.lazy='fax' type="text" class="form-control" placeholder="mekonnen"
+                            name="fax">
                         <label for="floatingInput" class="text-center">Fax<small>(optinal)</small></label></label>
+                        @error('fax')
+                            <span class="text-danger">{{ $message }}</span>
+                        @enderror
                     </div>
                 </div>
                 <div class="row mt-4">
@@ -57,19 +80,21 @@
 
                         </select>
                         <label for="floatingSelect">your sex</label>
+
                     </div>
-                   
+
                     <div class="col">
                         Marital Status
                         <div class="form-check">
-                            <input wire:model.lazy='Mstatus' class="form-check-input" type="radio" name="Mstatus" id="Mstatus" value="single">
+                            <input wire:model.lazy='Mstatus' class="form-check-input" type="radio" name="Mstatus"
+                                id="Mstatus" value="single">
                             <label class="form-check-label" for="Mstatus">
                                 single
                             </label>
                         </div>
                         <div class="form-check">
-                            <input wire:model.lazy='Mstatus'  class="form-check-input" type="radio" name="Mstatus" id="Mstatus"
-                                checked value="married" >
+                            <input wire:model.lazy='Mstatus' class="form-check-input" type="radio" name="Mstatus"
+                                id="Mstatus" checked value="married">
                             <label class="form-check-label" for="Mstatus">
                                 Married
                             </label>
@@ -83,16 +108,27 @@
             <h3>Your Emergency Contact Address</h3>
             <div class="row mt-4">
                 <div class="col form-floating ">
-                    <input wire:model.lazy='fullname' type="text" class="form-control" placeholder="dawit" name="fullname">
+                    <input wire:model.lazy='fullname' type="text" class="form-control" placeholder="dawit"
+                        name="fullname">
                     <label for="floatingInput" class="text-center">Fullname</label>
+                    @error('fullname')
+                        <span class="text-danger">{{ $message }}</span>
+                    @enderror
                 </div>
                 <div class="col form-floating ">
-                    <input wire:model.lazy='rel'  type="text" class="form-control" placeholder="mekonnen" name="rel">
+                    <input wire:model.lazy='rel' type="text" class="form-control" placeholder="mekonnen" name="rel">
                     <label for="floatingInput" class="text-center">Relationship</label>
+                    @error('rel')
+                        <span class="text-danger">{{ $message }}</span>
+                    @enderror
                 </div>
                 <div class="col form-floating ">
-                    <input wire:model.lazy='relphone' type="text" class="form-control" placeholder="mekonnen" name="relphone">
+                    <input wire:model.lazy='relphone' type="text" class="form-control" placeholder="mekonnen"
+                        name="relphone">
                     <label for="floatingInput" class="text-center">Phone</label>
+                    @error('relphone')
+                        <span class="text-danger">{{ $message }}</span>
+                    @enderror
                 </div>
             </div>
         </div>
@@ -101,24 +137,40 @@
             <h3>adress</h3>
             <div class="row mt-4">
                 <div class="col form-floating ">
-                    <input wire:model.lazy='natinality'  type="text" class="form-control" placeholder="dawit" name="natinality">
+                    <input wire:model.lazy='natinality' type="text" class="form-control" placeholder="dawit"
+                        name="natinality">
                     <label for="floatingInput" class="text-center">Natinality</label>
+                    @error('natinality')
+                        <span class="text-danger">{{ $message }}</span>
+                    @enderror
                 </div>
                 <div class="col form-floating ">
-                    <input  wire:model.lazy='region'  type="text" class="form-control" placeholder="mekonnen" name="region">
+                    <input wire:model.lazy='region' type="text" class="form-control" placeholder="mekonnen"
+                        name="region">
                     <label for="floatingInput" class="text-center">Region</label>
+                    @error('region')
+                        <span class="text-danger">{{ $message }}</span>
+                    @enderror
                 </div>
 
             </div>
             <div class="row mt-4">
 
                 <div class="col form-floating ">
-                    <input wire:model.lazy='sub_city'  type="text" class="form-control" placeholder="mekonnen" name="sub_city">
+                    <input wire:model.lazy='sub_city' type="text" class="form-control" placeholder="mekonnen"
+                        name="sub_city">
                     <label for="floatingInput" class="text-center">sub City</label>
+                    @error('sub_city')
+                        <span class="text-danger">{{ $message }}</span>
+                    @enderror
                 </div>
                 <div class="col form-floating ">
-                    <input wire:model.lazy='house_no' type="text" class="form-control" placeholder="mekonnen" name="house_no">
+                    <input wire:model.lazy='house_no' type="text" class="form-control" placeholder="mekonnen"
+                        name="house_no">
                     <label for="floatingInput" class="text-center">House No</label>
+                    @error('house_no')
+                        <span class="text-danger">{{ $message }}</span>
+                    @enderror
                 </div>
             </div>
 

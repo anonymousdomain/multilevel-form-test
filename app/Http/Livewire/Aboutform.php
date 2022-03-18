@@ -43,20 +43,30 @@ class Aboutform extends Component
         ],
     ];
 
-    // private $validationRules = [
-    //     1 => [
-    //         'name' => ['required', 'min:3'],
-    //         'lastname' => ['required', 'min:3'],
-    //         'email' => ['required', 'email', 'unique:users,email'],
-    //     ],
-    //     2 => [
-    //         'password' => ['required', 'string', 'min:8'],
-    //         'confirmPassword' => ['required', 'string', 'same:password', 'min:8'],
-    //     ],
-    // ];
+    private $validationRules = [
+        1 => [
+            'name' => ['required', 'min:3','max:25'],
+            'lastname' => ['required', 'min:3','max:25'],
+            'username' => ['required', 'min:3','max:25'],
+            'phone' => ['required', 'min:10','max:14'],
+            'email' => ['required', 'email', 'unique:users,email'],
+        ],
+        2 => [
+            'fullname' => ['required', 'string', 'min:3','max:25'],
+            'rel' => ['required', 'string', 'min:4', 'max:20'],
+            'relphone' => ['required', 'min:10','max:14'],
+        ],
+        3 => [
+            'natinality' => ['required', 'string', 'min:3','max:25'],
+            'region' => ['required', 'string', 'min:4', 'max:20'],
+            'sub_city' => ['required', 'min:3','max:25'],
+            'house_no' => ['required', 'unique:addresses,house_no'],
+        ],
+    ];
     public function goToNextPage()
     {
 
+        $this->validate($this->validationRules[$this->currentPage]);
         $this->currentPage++;
     }
 
@@ -75,9 +85,9 @@ class Aboutform extends Component
     // }
     public function submit(Request $request)
     {
-        // $rules = collect($this->validationRules)->collapse()->toArray();
+         $rules = collect($this->validationRules)->collapse()->toArray();
 
-        // $this->validate($rules);
+         $this->validate($rules);
 
         $request->user()->adresses()->create([
             'fax' =>$this->fax,
