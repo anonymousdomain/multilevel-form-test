@@ -2,12 +2,14 @@
 
 namespace App\Http\Livewire;
 
+use App\Models\Address;
 use Livewire\Component;
 use App\Models\User;
+use Illuminate\Http\Request;
 
 class Aboutform extends Component
 {
-    public $currentPage = 3;
+    public $currentPage = 1;
     public $success;
 
     public $name;
@@ -67,24 +69,30 @@ class Aboutform extends Component
     {
         $this->reset('success');
     }
-    public function updated($propertyName)
+    // public function updated($propertyName)
+    // {
+    //     $this->validateOnly($propertyName, $this->validationRules[$this->currentPage]);
+    // }
+    public function submit(Request $request)
     {
-        $this->validateOnly($propertyName, $this->validationRules[$this->currentPage]);
-    }
-    public function submit()
-    {
-        $rules = collect($this->validationRules)->collapse()->toArray();
+        // $rules = collect($this->validationRules)->collapse()->toArray();
 
-        $this->validate($rules);
+        // $this->validate($rules);
 
-        User::create([
-            'name' => "{$this->firstName} {$this->lastName}",
-            'email' => $this->email,
-            'password' => bcrypt($this->password),
+        $request->user()->adresses()->create([
+            'fax' =>$this->fax,
+            'Mstatus' => $this->Mstatus,
+            'fullname' => $this->fullname,
+            'rel' => $this->rel,
+            'relphone' => $this->relphone,
+            'natinality' => $this->natinality,
+            'region' => $this->region,
+            'sub_city' => $this->sub_city,
+            'house_no' => $this->house_no,
         ]);
 
         $this->reset();
-        $this->resetValidation();
+        // $this->resetValidation();
 
         $this->success = 'User created successfully!';
     }
