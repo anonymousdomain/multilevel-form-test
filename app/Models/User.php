@@ -2,15 +2,14 @@
 
 namespace App\Models;
 
-use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Fortify\TwoFactorAuthenticatable;
 use Laravel\Jetstream\HasProfilePhoto;
 use Laravel\Sanctum\HasApiTokens;
-
-class User extends Authenticatable
+use App\Notifications\ResetPasswordNotification;
+class User extends Authenticatable 
 {
     use HasApiTokens;
     use HasFactory;
@@ -46,6 +45,7 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+
     /**
      * The accessors to append to the model's array form.
      *
@@ -57,5 +57,13 @@ class User extends Authenticatable
 
     public function adresses(){
         return $this->hasOne(Address::class);
+    }
+
+    public function sendPasswordResetNotification($token)
+    {
+
+        $url = 'https://spa.test/reset-password?token=' . $token;
+
+        $this->notify(new ResetPasswordNotification($url));
     }
 }

@@ -106,7 +106,7 @@ class Aboutform extends Component
 
         $this->success = 'User created successfully!';
 
-        return redirect()->route('dashboard');
+        return redirect()->route('table');
     }
     public function render()
     {
